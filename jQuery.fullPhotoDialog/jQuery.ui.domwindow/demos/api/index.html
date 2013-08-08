@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>jQuery.ui.domwindow</title>
+<link rel="stylesheet" href="../../domwindow.css">
+<style>
+body{
+	text-align:center;
+	font-family:sans-serif;
+	line-height:1.5;
+}
+#all{
+	text-align:left;
+	width:800px;
+	margin:0 auto;
+	padding:20px 0 50px;
+}
+.ui-domwindowdialog{
+	background:#fff;
+}
+pre{
+	border:1px solid #000;
+	padding:10px;
+	font-size:15px;
+	font-family:monospace;
+}
+</style>
+<script src="../../lib/jquery/1.9.1/jquery.js"></script>
+<script src="../../lib/jquery.ui.widget.js"></script>
+<script src="../../jquery.ui.domwindow.js"></script>
+<script>
+if (!window.console){
+	window.console = {}
+	window.console.log = function(arg){
+		alert(arg);
+
+	};
+}
+$(function(){
+	$.ui.domwindowdialog.setup({
+		width: 600, // dialog width
+		height: 300, // dialog height
+		spinnersrc: '../../spinner.gif' // specify this for preload
+	});
+});
+</script>
+</head>
+<body><div id="all">
+<h1><a href="https://github.com/Takazudo/jQuery.ui.domwindow">jQuery.ui.domwindow</a> - demo - api</h1>
+<p>You don't need to pass the second argument if local option was not necessary.</p>
+<h2>ajaxdialog</h2>
+<button id="apiex-ajax-open">open</button>
+<script>
+$(function(){
+	$('#apiex-ajax-open').click(function(){
+		window.domwindowApi.open('dialog1.html', {
+			ajaxdialog: true,
+			width: 400,
+			height: 600,
+			beforeopen: function(e, data){
+				console.log('beforeopen!', data.dialog);
+			},
+			afteropen: function(e, data){
+				console.log('afteropen!', data.dialog);
+			},
+			beforeclose: function(e, data){
+				console.log('beforeclose!', data.dialog);
+			},
+			afterclose: function(e, data){
+				console.log('afterclose!', data.dialog);
+			}
+		});
+	});
+});
+</script>
+<pre>$(function(){
+    $('#apiex-ajax-open').click(function(){
+        window.domwindowApi.open('dialog1.html', {
+            ajaxdialog: true,
+            width: 400,
+            height: 600,
+            beforeopen: function(e, data){
+                console.log('beforeopen!', data.dialog);
+            },
+            afteropen: function(e, data){
+                console.log('afteropen!', data.dialog);
+            },
+            beforeclose: function(e, data){
+                console.log('beforeclose!', data.dialog);
+            },
+            afterclose: function(e, data){
+                console.log('afterclose!', data.dialog);
+            }
+        });
+    });
+});</pre>
+
+<h2>iframedialog</h2>
+<button id="apiex-iframe-open">open</button>
+<script>
+$(function(){
+	$('#apiex-iframe-open').click(function(){
+		window.domwindowApi.open('dialog2.html', {
+			iframedialog: true,
+			width: 600,
+			height: 200,
+			beforeopen: function(e, data){
+				console.log('beforeopen!', data.dialog);
+			},
+			afteropen: function(e, data){
+				console.log('afteropen!', data.dialog);
+			},
+			beforeclose: function(e, data){
+				console.log('beforeclose!', data.dialog);
+			},
+			afterclose: function(e, data){
+				console.log('afterclose!', data.dialog);
+			}
+		});
+	});
+});
+</script>
+<pre>$(function(){
+    $('#apiex-iframe-open').click(function(){
+        window.domwindowApi.open('dialog2.html', {
+            iframedialog: true,
+            width: 600,
+            height: 200,
+            beforeopen: function(e, data){
+                console.log('beforeopen!', data.dialog);
+            },
+            afteropen: function(e, data){
+                console.log('afteropen!', data.dialog);
+            },
+            beforeclose: function(e, data){
+                console.log('beforeclose!', data.dialog);
+            },
+            afterclose: function(e, data){
+                console.log('afterclose!', data.dialog);
+            }
+        });
+    });
+});</pre>
+
+<h2>iddialog</h2>
+<button id="apiex-iddialog-open">open</button>
+<script>
+$(function(){
+	$('#apiex-iddialog-open').click(function(){
+		window.domwindowApi.open('iddialogcontent', {
+			iddialog: true,
+			width: 800,
+			height: 800,
+			beforeopen: function(e, data){
+				console.log('beforeopen!', data.dialog);
+			},
+			afteropen: function(e, data){
+				console.log('afteropen!', data.dialog);
+			},
+			beforeclose: function(e, data){
+				console.log('beforeclose!', data.dialog);
+			},
+			afterclose: function(e, data){
+				console.log('afterclose!', data.dialog);
+			}
+		});
+	});
+});
+</script>
+<pre>$(function(){
+    $('#apiex-iddialog-open').click(function(){
+        window.domwindowApi.open('iddialogcontent', {
+            iddialog: true,
+            width: 800,
+            height: 800,
+            beforeopen: function(e, data){
+                console.log('beforeopen!', data.dialog);
+            },
+            afteropen: function(e, data){
+                console.log('afteropen!', data.dialog);
+            },
+            beforeclose: function(e, data){
+                console.log('beforeclose!', data.dialog);
+            },
+            afterclose: function(e, data){
+                console.log('afterclose!', data.dialog);
+            }
+        });
+    });
+});</pre>
+<p>Iddialog also works with '#id'</p>
+<pre>$(function(){
+    $('#apiex-iddialog-open').click(function(){
+        window.domwindowApi.open('#iddialogcontent', {
+            width: 800,
+            height: 800,
+        });
+    });
+});</pre>
+
+<script type="text/x-dialogsrc" id="iddialogcontent">
+	<div style="padding:30px">
+		<h2>iddialog example</h2>
+		<p><a class="apply-domwindow-close" href="#">close</a></p>
+	</div>
+</script>
+
+<h2>strdialog</h2>
+<button id="apiex-strdialog-open">open</button>
+<script>
+$(function(){
+	var str = [
+		'<div style="padding:30px">',
+		'	<h2>iddialog example</h2>',
+		'	<p><a class="apply-domwindow-close" href="#">close</a></p>',
+		'</div>'
+	].join('');
+	$('#apiex-strdialog-open').click(str, function(){
+		window.domwindowApi.open('iddialogcontent', {
+			strdialog: true,
+			width: 800,
+			height: 800,
+			beforeopen: function(e, data){
+				console.log('beforeopen!', data.dialog);
+			},
+			afteropen: function(e, data){
+				console.log('afteropen!', data.dialog);
+			},
+			beforeclose: function(e, data){
+				console.log('beforeclose!', data.dialog);
+			},
+			afterclose: function(e, data){
+				console.log('afterclose!', data.dialog);
+			}
+		});
+	});
+});
+</script>
+<pre>$(function(){
+    var str = [
+        '&lt;div style=&quot;padding:30px&quot;&gt;',
+        '    &lt;h2&gt;iddialog example&lt;/h2&gt;',
+        '    &lt;p&gt;&lt;a class=&quot;apply-domwindow-close&quot; href=&quot;#&quot;&gt;close&lt;/a&gt;&lt;/p&gt;',
+        '&lt;/div&gt;'
+    ].join('');
+    $('#apiex-strdialog-open').click(str, function(){
+        window.domwindowApi.open('iddialogcontent', {
+            strdialog: true,
+            width: 800,
+            height: 800,
+            beforeopen: function(e, data){
+                console.log('beforeopen!', data.dialog);
+            },
+            afteropen: function(e, data){
+                console.log('afteropen!', data.dialog);
+            },
+            beforeclose: function(e, data){
+                console.log('beforeclose!', data.dialog);
+            },
+            afterclose: function(e, data){
+                console.log('afterclose!', data.dialog);
+            }
+        });
+    });
+});</pre>
+
+
+</div></body>
+</html>
